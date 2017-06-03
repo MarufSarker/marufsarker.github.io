@@ -1,0 +1,56 @@
+# *************************************************************************
+# * Name          : .editorconfig                                         *
+# * Purpose       : Providing Universal Configurations for Editors        *
+# * Author        : Abu Md. Maruf Sarker                                  *
+# * Copyright (c) : 2016-Present, Abu Md. Maruf Sarker                    *
+# * Website       : https://marufsarker.github.io                         *
+# * License       : MIT License (https://opensource.org/licenses/MIT)     *
+# *************************************************************************
+
+# top-most EditorConfig file
+root = true
+
+# Unix-Style Newlines With A Newline Ending In Every File
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Default Charset
+[*.{css,html,js,json,md,txt,yml}]
+charset = utf-8
+
+# JavaScript Files' Configurations
+[*.js]
+indent_style = space
+indent_size = 2
+
+# JSON Files' Configurations
+[*.json]
+indent_style = space
+indent_size = 2
+
+# HTML Files' Configurations
+[*.html]
+indent_style = tab
+tab_width = 4
+
+# Blog Post Files' Configurations
+[_posts/**.md]
+indent_style = tab
+tab_width = 4
+
+# CSS Files' Configurations
+[*.css]
+indent_style = tab
+indent_size = 4
+
+# YAML Files' Configurations
+[*.yml]
+indent_style = space
+indent_size = 2
+
+# Gemfile Configurations
+[Gemfile]
+indent_style = tab
+indent_size = 4
