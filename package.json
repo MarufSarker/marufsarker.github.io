@@ -1,0 +1,59 @@
+{
+  "name": "marufsarker-github-io",
+  "author": "Abu Md. Maruf Sarker",
+  "description": "Build Essential NodeJS Implementation",
+  "homepage": "https://marufsarker.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarufSarker/marufsarker.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarufSarker/marufsarker.github.io/issues"
+  },
+  "keywords": [
+    "maruf",
+    "sarker",
+    "marufsarker",
+    "maruf-sarker",
+    "personal-blog",
+    "game-developer",
+    "web-developer",
+    "gihub-pages",
+    "developer",
+    "gh-pages",
+    "blog",
+    "game",
+    "web"
+  ],
+  "main": "gulpfile.js",
+  "scripts": {
+    "task-gulp-build": "node ./node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js gulp-build",
+    "gulp-build-dev": "node ./node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development npm run task-gulp-build",
+    "gulp-build": "node ./node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production npm run task-gulp-build",
+    "run-gulp": "node ./node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js",
+    "start-dev": "node ./node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development npm run run-gulp",
+    "start": "node ./node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production npm run run-gulp",
+    "clean": "node ./node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js clean"
+  },
+  "dependencies": {
+    "lunr": "^1.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "cross-env": "^4.0.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-standard": "^9.0.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
+    "lazypipe": "^1.0.1",
+    "standard": "^9.0.2"
+  }
+}

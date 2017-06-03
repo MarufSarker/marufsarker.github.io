@@ -1,0 +1,15 @@
+# *************************************************************************
+# * Name          : _config_dev.yml                                       *
+# * Purpose       : Instruction set (additional) for JekyllRB             *
+# * Author        : Abu Md. Maruf Sarker                                  *
+# * Copyright (c) : 2016-Present, Abu Md. Maruf Sarker                    *
+# * Website       : https://marufsarker.github.io                         *
+# * License       : MIT License (https://opensource.org/licenses/MIT)     *
+# *************************************************************************
+
+# Jekyll Build Configurations
+
+# Site Settings
+port: 4000
+host: 127.0.0.1
+url: "http://127.0.0.1:4000"

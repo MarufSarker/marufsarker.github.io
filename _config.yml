@@ -1,0 +1,97 @@
+# *************************************************************************
+# * Name          : _config.yml                                           *
+# * Purpose       : Instruction set for JekyllRB                          *
+# * Author        : Abu Md. Maruf Sarker                                  *
+# * Copyright (c) : 2016-Present, Abu Md. Maruf Sarker                    *
+# * Website       : https://marufsarker.github.io                         *
+# * License       : MIT License (https://opensource.org/licenses/MIT)     *
+# *************************************************************************
+
+# Meta Informations
+
+# Site Owner
+owner:
+  name: "Abu Md. Maruf Sarker"
+  job_title: "Game and Web Engineer"
+  bio: "Abu Md. Maruf Sarker is an Independent Developer working in Game Development, 3D Graphics Modeling and Designing and, Web Development."
+  avatar: "/assets/profiles/profile-512x512.jpg"
+  socials:
+    twitter:
+      username: "iMaruf"
+      site: "@iMARUF"
+      url: "https://twitter.com/iMaruf"
+      creator: "@iMARUF"
+      image: "/assets/profiles/profile-512x512.jpg"
+    github:
+      username: "MarufSarker"
+      url: "https://github.com/MarufSarker"
+    gravatar:
+      url: "https://www.gravatar.com/avatar/967680e440e0cdc7ff6da82ab84f04d6"
+    opengraph:
+      site_name: "Maruf Sarker"
+      image: "/assets/profiles/profile-512x512.jpg"
+    linkedin:
+      url: "https://bd.linkedin.com/in/marufsarker"
+    codepen:
+      url: "http://codepen.io/MarufSarker"
+
+# Timezone
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: "Asia/Dhaka"
+
+# Google Analytics
+google_analytics: UA-73363148-1
+
+
+# Jekyll Build Configurations
+
+# Ruby Gems
+gems:
+  - github-pages
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - rouge
+
+# Site Settings
+title: "Maruf Sarker"
+name: "Abu Md. Maruf Sarker"
+author: "Maruf Sarker"
+description: "Abu Md. Maruf Sarker is an Independent Developer working in Game Development, 3D Graphics Designing and, Web Development."
+baseurl: ""
+url: "https://marufsarker.github.io"
+
+# Build Settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+paginate: 10
+paginate_path: "blog/page:num"
+collections:
+  portfolio:
+    output: true
+    permalink: "/portfolio/:title"
+defaults:
+  -
+    scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Maruf Sarker"
+      permalink: /blog/:year/:month/:day/:title/
+exclude:
+  - .bundle
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.js
+  - less
+  - LICENSE
+  - LICENSE.*
+  - node_modules
+  - npm-debug.log
+  - package.json
+  - README
+  - README.*
