@@ -1,0 +1,56 @@
+---
+layout: default
+---
+<div class="amms-page-homepage" itemscope itemtype="http://schema.org/Person">
+	<div class="amms-homepage-headshot">
+		<img class="amms-gb-rounded-img" src="{{ site.owner.avatar | prepend: site.url }}" alt="{{ site.owner.name }}" title="{{ site.owner.name }}" itemprop="image" />
+		<div class="amms-gb-title-container">
+			<h1 class="amms-gb-title-name" itemprop="name">
+				{{ site.owner.name }}
+			</h1>
+			<h2 class="amms-gb-title-tag" itemprop="jobTitle">
+				{{ site.owner.job_title }}
+			</h2>
+		</div>
+	</div>
+
+	<div class="amms-gb-shadow-divider"></div>
+
+	<div class="amms-gb-cb-holder">
+		<div class="amms-gb-cb amms-gb-cb-blog">
+			<a class="amms-gb-cb-link" href="{{ "/blog" | prepend: site.url }}">
+				<i class="amms-gb-cb-icon amms-gb-cb-icon-blog"></i>
+				<span class="amms-gb-cb-text amms-gb-cb-text-blog">Blog</span>
+			</a>
+		</div>
+		<div class="amms-gb-cb amms-gb-cb-contact">
+			<a class="amms-gb-cb-link" href="{{ "/contact" | prepend: site.url }}">
+				<i class="amms-gb-cb-icon amms-gb-cb-icon-contact"></i>
+				<span class="amms-gb-cb-text amms-gb-cb-text-contact">Contact</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="amms-gb-shadow-divider"></div>
+
+	<div class="amms-gb-cb-holder">
+		<div class="amms-gb-cb amms-gb-cb-twitter">
+			<a class="amms-gb-cb-link" href="{{ site.owner.socials.twitter.url }}" target="_blank">
+				<i class="amms-gb-cb-icon amms-gb-cb-icon-twitter"></i>
+				<span class="amms-gb-cb-text amms-gb-cb-text-twitter">Twitter</span>
+			</a>
+		</div>
+		<div class="amms-gb-cb amms-gb-cb-github">
+			<a class="amms-gb-cb-link" href="{{ site.owner.socials.github.url }}" target="_blank">
+				<i class="amms-gb-cb-icon amms-gb-cb-icon-github"></i>
+				<span class="amms-gb-cb-text amms-gb-cb-text-github">GitHub</span>
+			</a>
+		</div>
+		<div class="amms-gb-cb amms-gb-cb-linkedin">
+			<a class="amms-gb-cb-link" href="{{ site.owner.socials.linkedin.url }}" target="_blank">
+				<i class="amms-gb-cb-icon amms-gb-cb-icon-linkedin"></i>
+				<span class="amms-gb-cb-text amms-gb-cb-text-linkedin">LinkedIn</span>
+			</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+{% if page.categories.size > 0 %}
+	{% assign temp_catagories = page.categories %}
+{% else %}
+	{% assign temp_catagories = "uncategorized" %}
+{% endif %}
+
+{% if page.tags.size > 0 %}
+	{% assign temp_tags = page.tags %}
+{% else %}
+	{% assign temp_tags = "untagged" %}
+{% endif %}
+
+<section class="amms-blog-post-categories-tags-holder">
+	<div class="amms-blog-post-categories-holder">
+		Categories:
+		{% for category in temp_catagories %}
+			<a class="amms-blog-post-category" href="{{ site.url | append:'/blog/categories/#'}}{{ category | slugify }}" title="{{ category | prepend:'Category: ' }}">
+				{{ category }}
+			</a>
+		{% endfor %}
+	</div>
+	<div class="amms-blog-post-tags-holder">
+		Tags:
+		{% for tag in temp_tags %}
+			<a class="amms-blog-post-tag" href="{{ site.url | append:'/blog/tags/#'}}{{ tag | slugify }}" title="{{ tag | prepend:'Tag: ' }}">
+				{{ tag }}
+			</a>
+		{% endfor %}
+	</div>
+</section>

@@ -1,0 +1,38 @@
+<div id="amms-page-bring-to-top-holder">
+	<div id="amms-page-bring-to-top">^</div>
+</div>
+
+<script type="text/javascript">
+	var pageTopHolder = 'amms-page-bring-to-top-holder'
+	var pageTop = 'amms-page-bring-to-top'
+	var pageTopHolderDOMNode = document.getElementById(pageTopHolder)
+	var pageTopDOMNode = document.getElementById(pageTop)
+	var previousScrollY = 0
+	var allowedBringToTop = false
+
+	function processBringToTop () {
+		var currentScrollY = window.scrollY
+		if (currentScrollY > previousScrollY) {
+			allowedBringToTop = true
+			previousScrollY = currentScrollY
+		}
+	}
+
+	function processTakePageToTop () {
+		if (allowedBringToTop === true) {
+			window.scroll(0, 0)
+		}
+	}
+
+	if (pageTopDOMNode.addEventListener) {
+		pageTopDOMNode.addEventListener('click', processTakePageToTop, false)
+	} else if (pageTopDOMNode.attachEvent) {
+		pageTopDOMNode.attachEvent('click', processTakePageToTop)
+	}
+
+	if (window.addEventListener) {
+		window.addEventListener('scroll', processBringToTop, false)
+	} else if (window.attachEvent) {
+		window.attachEvent('scroll', processBringToTop)
+	}
+</script>

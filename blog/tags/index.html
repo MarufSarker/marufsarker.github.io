@@ -1,0 +1,85 @@
+---
+layout: general
+title: Blog Posts Tags
+---
+
+{% assign all_tags = "" %}
+{% assign untagged = "untagged" %}
+{% assign tag_joiner = "|" %}
+{% for post in site.posts %}
+	{% if post.tags.size > 0 %}
+		{% assign temp_tags = post.tags | join:tag_joiner | append:tag_joiner %}
+	{% else %}
+		{% assign temp_tags = untagged | join:tag_joiner | append:tag_joiner %}
+	{% endif %}
+	{% assign all_tags = all_tags | append:temp_tags %}
+{% endfor %}
+{% assign all_tags = all_tags | split:tag_joiner | uniq | sort %}
+
+<div class="amms-page-blog">
+	<div class="amms-gb-spage-header-container">
+		<div class="amms-gb-spage-header-body">
+			<header class="amms-gb-spage-header">
+				<h1 class="amms-gb-spage-header-title">
+					<a href="{{ "/blog/tags" | prepend: site.url }}">
+						Blog Posts Tags
+					</a>
+				</h1>
+			</header>
+			<div class="amms-gb-spage-header-show-link-container">
+				<div href="#blog" class="amms-gb-spage-header-show-link">
+					<span class="amms-gb-spage-header-show-link-title">
+						All Tags
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include html/blog_posts_search.html %}
+
+	<section class="amms-page-blog-body amms-page-category-tag-body" id="blog">
+		<div class="amms-page-category-tag-all-list-holder">
+			{% for tag in all_tags %}
+			<a class="amms-blog-post-category" href="#{{ tag | slugify }}">
+				{{ tag }}
+			</a>
+			{% endfor %}
+		</div>
+		<div class="amms-gb-cards-container-horizontal">
+			{% for tag in all_tags %}
+			<a class="amms-page-category-tag-title-holder" href="#{{ tag | slugify }}">
+				<h2 class="amms-page-category-tag-title" id="{{ tag | slugify }}">
+					{{ tag }}
+				</h2>
+			</a>
+			<ul class="amms-page-category-tag-list">
+				{% for post in site.posts %}{% if post.tags contains tag %}
+				<li class="amms-page-category-tag-list-item">
+					<h3 class="amms-page-category-tag-list-item-header">
+						<a class="amms-page-category-tag-list-item-link" href="{{ post.url }}">
+							{{ post.title }}
+						</a>
+						<small class="amms-page-category-tag-list-item-date">
+							{{ post.date | date: "%b %-d, %Y" }}
+						</small>
+					</h3>
+				</li>
+				{% elsif post.tags.size <= 0 and tag == untagged %}
+				<li class="amms-page-category-tag-list-item">
+					<h3 class="amms-page-category-tag-list-item-header">
+						<a class="amms-page-category-tag-list-item-link" href="{{ post.url }}">
+							{{ post.title }}
+						</a>
+						<small class="amms-page-category-tag-list-item-date">
+							{{ post.date | date: "%b %-d, %Y" }}
+						</small>
+					</h3>
+				</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+			{% endfor %}
+		</div>
+	</section>
+</div>

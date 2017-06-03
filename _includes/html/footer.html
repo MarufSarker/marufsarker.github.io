@@ -1,0 +1,40 @@
+{% include html/site_warning_popup.html %}
+
+<footer role="contentinfo" class="amms-footer">
+	<ul class="amms-footer-list">
+		<li class="amms-footer-list-item">
+			<a href="{{ site.owner.socials.twitter.url }}" target="_blank" class="amms-footer-list-item-link">
+				<i class="amms-footer-list-item-svg amms-footer-svg-twitter"></i>
+			</a>
+		</li>
+		<li class="amms-footer-list-item">
+			<a href="{{ site.owner.socials.github.url }}" target="_blank" class="amms-footer-list-item-link">
+				<i class="amms-footer-list-item-svg amms-footer-svg-github"></i>
+			</a>
+		</li>
+		<li class="amms-footer-list-item">
+			<a href="{{ site.owner.socials.linkedin.url }}" target="_blank" class="amms-footer-list-item-link">
+				<i class="amms-footer-list-item-svg amms-footer-svg-linkedin"></i>
+			</a>
+		</li>
+		<li class="amms-footer-list-item">
+			<a href="{{ '/feed.xml' | prepend: site.url }}" target="_blank" class="amms-footer-list-item-link">
+				<i class="amms-footer-list-item-svg amms-footer-svg-rss"></i>
+			</a>
+		</li>
+	</ul>
+	<p class="amms-footer-copyright">
+		Copyright &#169; <a href="{{ '/' | prepend: site.url }}" class="amms-gb-padded-a">{{ site.owner.name }}</a><br/>
+		2016-Present, All Rights Reserved
+	</p>
+</footer>
+
+<!-- Site's Scripts -->
+<script type="text/javascript">
+{% include bundle/js-main.js %}
+</script>
+
+</body>
+</html>
+
+<!-- May Almighty Allah Bless and Protect You -->

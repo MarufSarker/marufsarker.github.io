@@ -1,0 +1,59 @@
+---
+layout: general
+title: Blog
+---
+
+<div class="amms-page-blog">
+	<div class="amms-gb-spage-header-container">
+		<div class="amms-gb-spage-header-body">
+			<header class="amms-gb-spage-header">
+				<h1 class="amms-gb-spage-header-title">
+					<a href="/blog">Blog Articles</a>
+				</h1>
+			</header>
+			<div class="amms-gb-spage-header-show-link-container">
+				<div href="#blog" class="amms-gb-spage-header-show-link">
+					<span class="amms-gb-spage-header-show-link-title">
+						Latest Articles
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include html/blog_posts_search.html %}
+
+	<section class="amms-page-blog-body" id="blog">
+		<div class="amms-gb-cards-container-horizontal">
+			{% for post in paginator.posts %}
+			<a class="amms-gb-card-htxt-container" href="{{ post.url | prepend: site.baseurl }}" alt="{{ post.title }}" title="{{ post.title }}">
+				<span class="amms-gb-card-htxt-tag">
+					{{ post.date | date: "%b %-d, %Y" }}
+				</span>
+				<h3 class="amms-gb-card-htxt-title">
+					{{ post.title }}
+				</h3>
+			</a>
+			{% endfor %}
+		</div>
+
+		{% if paginator.total_pages > 1 %}
+		<div class="amms-gb-pagination-container">
+			{% if paginator.previous_page %}
+			<div class="amms-gb-pagination-next">
+				<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="amms-gb-pagination-next-link">
+					Newer
+				</a>
+			</div>
+			{% endif %}
+			{% if paginator.next_page %}
+			<div class="amms-gb-pagination-previous">
+				<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="amms-gb-pagination-previous-link">
+					Previous
+				</a>
+			</div>
+			{% endif %}
+		</div>
+		{% endif %}
+	</section>
+</div>

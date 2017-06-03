@@ -1,0 +1,16 @@
+---
+layout: null
+---
+/* TEAM */
+Name: {{ site.owner.name }}
+Bio: {{ site.owner.bio }}
+Site: {{ "/" | prepend: site.url }}
+GitHub: {{ "/" | prepend: site.owner.socials.github.url }}
+Twitter: {{ "/" | prepend: site.owner.socials.twitter.url }}
+
+/* THANKS */
+Name: {{ site.owner.name }}
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+Components: HTML5, CSS3, JavaScript

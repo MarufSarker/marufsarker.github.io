@@ -1,0 +1,182 @@
+/*************************************************************************
+ * Name          : highlighter.css                                       *
+ * Purpose       : Code Snippets Highlighting CSS Styles for the Site    *
+ * Current Theme : ZENBURN                                               *
+ * Source        : https://github.com/jwarby/jekyll-pygments-themes      *
+ *************************************************************************/
+
+.highlight code,
+.highlight pre {
+	color: #FDCE93;
+	background-color: #3F3F3F;
+}
+
+.highlight .hll {
+	background-color: #222222;
+}
+
+.highlight .err {
+	color: #E37170;
+	background-color: #3D3535;
+}
+
+.highlight .k {
+	color: #F0DFAF;
+}
+
+.highlight .p {
+	color: #41706F;
+}
+
+.highlight .cs {
+	color: #CD0000;
+	font-weight: 700;
+}
+
+.highlight .gd {
+	color: #CD0000;
+}
+
+.highlight .ge {
+	color: #CCCCCC;
+	font-style: italic;
+}
+
+.highlight .gr {
+	color: #FF0000;
+}
+
+.highlight .go {
+	color: #808080;
+}
+
+.highlight .gs {
+	color: #CCCCCC;
+	font-weight: 700;
+}
+
+.highlight .gu {
+	color: #800080;
+	font-weight:700;
+}
+
+.highlight .gt {
+	color:#0040D0;
+}
+
+.highlight .kc {
+	color: #DCA3A3;
+}
+
+.highlight .kd {
+	color: #FFFF86;
+}
+
+.highlight .kn {
+	color: #DFAF8F;
+	font-weight: 700;
+}
+
+.highlight .kp {
+	color: #CDCF99;
+}
+
+.highlight .kr {
+	color: #CDCD00;
+}
+
+.highlight .ni {
+	color: #C28182;
+}
+
+.highlight .ne {
+	color: #C3BF9F;
+	font-weight: 700;
+}
+
+.highlight .nn {
+	color: #8FBEDE;
+}
+
+.highlight .vi {
+	color: #FFFFC7;
+}
+
+.highlight .c,
+.highlight .g,
+.highlight .cm,
+.highlight .cp,
+.highlight .c1 {
+	color: #7F9F7F;
+}
+
+.highlight .l,
+.highlight .x,
+.highlight .no,
+.highlight .nd,
+.highlight .nl,
+.highlight .nx,
+.highlight .py,
+.highlight .w {
+	color: #CCCCCC;
+}
+
+.highlight .n,
+.highlight .nv,
+.highlight .vg {
+	color: #DCDCCC;
+}
+
+.highlight .o,
+.highlight .ow {
+	color: #F0EFD0;
+}
+
+.highlight .gh,
+.highlight .gp {
+	color: #DCDCCC;
+	font-weight: 700;
+}
+
+.highlight .gi,
+.highlight .kt {
+	color: #00CD00;
+}
+
+.highlight .ld,
+.highlight .s,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss {
+	color: #CC9393;
+}
+
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il {
+	color: #8CD0D3;
+}
+
+.highlight .na,
+.highlight .nt {
+	color: #9AC39F;
+}
+
+.highlight .nb,
+.highlight .nc,
+.highlight .nf,
+.highlight .bp,
+.highlight .vc {
+	color: #EFEF8F;
+}
