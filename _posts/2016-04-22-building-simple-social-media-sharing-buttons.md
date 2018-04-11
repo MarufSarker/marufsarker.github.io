@@ -8,6 +8,7 @@ tagline: "Building simple social media sharing buttons without any external libr
 tags: ["html", "css", "javascript"]
 thumbnail: "/assets/posts/2016-04-22-building-simple-social-media-sharing-buttons/social-media-sharing-buttons.png"
 title:  "Building Simple Social Media Sharing Buttons Without Any External Libraries"
+post_url: 2016-04-22-building-simple-social-media-sharing-buttons
 ---
 
 ## Introduction

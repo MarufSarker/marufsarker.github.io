@@ -8,6 +8,7 @@ tagline: "Webpack is a module bundler with potential of replacing other task run
 tags: ["webpack", "nodejs", "javascript"]
 thumbnail: "/assets/posts/2016-04-10-introduction-about-webpack-configuration/what-is-webpack.png"
 title:  "An Introduction about Webpack Configuration"
+post_url: 2016-04-10-introduction-about-webpack-configuration
 ---
 
 <figure class="amms-gb-img-figure-centered">
