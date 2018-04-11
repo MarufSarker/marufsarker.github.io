@@ -65,9 +65,9 @@ tutorial-react-redux-graphql
 |           styles.css
 |
 \---webpack
-				vendors.js
-				webpack.config.dev.js
-				webpack.config.prod.js
+        vendors.js
+        webpack.config.dev.js
+        webpack.config.prod.js
 ```
 
 As you see the folder structure, you might wonder, why there is no *index.html* or similar *view engine* files in my folder structure. The reason behind is that, I'll use webpack's module to serve my *html* file, as ReactJS based web-applications just need a hook in html file to add itself to get started and, I'm willing to leverage that process to webpack to handle. But if you want to go that route, I'll add a html snippet which can be used instead of my webpack's specific configuration, which I'll mention later.
@@ -78,9 +78,9 @@ As you see the folder structure, you might wonder, why there is no *index.html* 
 
 ```javascript
 module.exports = [
-	"babel-polyfill",
-	"react",
-	"react-dom"
+  "babel-polyfill",
+  "react",
+  "react-dom"
 ]
 ```
 
@@ -98,51 +98,51 @@ var HTMLWebpackPlugin = require('html-webpack-plugin')
 var vendors = require('./vendors')
 
 module.exports = function(env) {
-	return {
-		entry: {
-			'dist/bundle': path.resolve(__dirname, '..', 'src', 'index.js'),
-			'dist/vendors': vendors
-		},
-		output: {
-			path: path.resolve(__dirname, '..', 'public'),
-			filename: '[name].js'
-		},
-		module: {
-			loaders: [{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
-			}, {
-				test: /\.css$/,
-				exclude: /node_modules/,
-				loader: "style-loader!css-loader!postcss-loader"
-			}],
-		},
-		postcss: function() {
-			return {
-				defaults: [autoprefixer, precss],
-				cleaner: [autoprefixer({ browsers: ['last 2 versions'] })]
-			}
-		},
-		plugins: [
-			new webpack.optimize.DedupePlugin(),
-			new webpack.optimize.CommonsChunkPlugin('dist/vendors', 'dist/vendors.bundle.js'),
-			new webpack.DefinePlugin({
-				'process.env.NODE_ENV': env
-			}),
-			new HTMLWebpackPlugin({
-				template: path.resolve(__dirname, '..', 'node_modules/html-webpack-template/index.ejs'),
-				devServer: 'http://localhost:3000',
-				title: 'React Redux GraphQL',
-				chunks: ['dist/vendors', 'dist/bundle'],
-				filename: 'index.html',
-				appMountId: 'app',
-				inject: false,
-				mobile: true,
-				hash: false
-			}),
-		]
-	}
+  return {
+    entry: {
+      'dist/bundle': path.resolve(__dirname, '..', 'src', 'index.js'),
+      'dist/vendors': vendors
+    },
+    output: {
+      path: path.resolve(__dirname, '..', 'public'),
+      filename: '[name].js'
+    },
+    module: {
+      loaders: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }, {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: "style-loader!css-loader!postcss-loader"
+      }],
+    },
+    postcss: function() {
+      return {
+        defaults: [autoprefixer, precss],
+        cleaner: [autoprefixer({ browsers: ['last 2 versions'] })]
+      }
+    },
+    plugins: [
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.CommonsChunkPlugin('dist/vendors', 'dist/vendors.bundle.js'),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': env
+      }),
+      new HTMLWebpackPlugin({
+        template: path.resolve(__dirname, '..', 'node_modules/html-webpack-template/index.ejs'),
+        devServer: 'http://localhost:3000',
+        title: 'React Redux GraphQL',
+        chunks: ['dist/vendors', 'dist/bundle'],
+        filename: 'index.html',
+        appMountId: 'app',
+        inject: false,
+        mobile: true,
+        hash: false
+      }),
+    ]
+  }
 }
 ```
 
@@ -168,65 +168,65 @@ var HTMLWebpackPlugin = require('html-webpack-plugin')
 var vendors = require('./vendors')
 
 module.exports = function(env) {
-	return {
-		entry: {
-			'dist/bundle': path.resolve(__dirname, '..', 'src', 'index.js'),
-			'dist/vendors': vendors
-		},
-		output: {
-			path: path.resolve(__dirname, '..', 'public'),
-			filename: '[name].js'
-		},
-		module: {
-			loaders: [{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
-			}, {
-				test: /\.css$/,
-				exclude: /node_modules/,
-				loader: "style-loader!css-loader!postcss-loader"
-			}],
-		},
-		postcss: function() {
-			return {
-				defaults: [autoprefixer, precss],
-				cleaner: [autoprefixer({ browsers: ['last 2 versions'] })]
-			}
-		},
-		plugins: [
-			new webpack.optimize.DedupePlugin(),
-			new webpack.optimize.CommonsChunkPlugin('dist/vendors', 'dist/vendors.bundle.js'),
-			new webpack.DefinePlugin({
-				'process.env.NODE_ENV': env
-			}),
-			new webpack.optimize.UglifyJsPlugin({
-				compress: {
-					warnings: false,
-					drop_console: true
-				},
-				mangle: {
-					except: ['$super', '$', 'exports', 'require']
-				}
-			}),
-			new HTMLWebpackPlugin({
-				template: path.resolve(__dirname, '..', 'node_modules/html-webpack-template/index.ejs'),
-				title: 'React Redux GraphQL',
-				chunks: ['dist/vendors', 'dist/bundle'],
-				filename: 'index.html',
-				appMountId: 'app',
-				inject: false,
-				mobile: true,
-				hash: false,
-				minify: {
-					removeComments: true,
-					collapseWhitespace: true,
-					conservativeCollapse: true,
-					collapseInlineTagWhitespace: true,
-				}
-			}),
-		]
-	}
+  return {
+    entry: {
+      'dist/bundle': path.resolve(__dirname, '..', 'src', 'index.js'),
+      'dist/vendors': vendors
+    },
+    output: {
+      path: path.resolve(__dirname, '..', 'public'),
+      filename: '[name].js'
+    },
+    module: {
+      loaders: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }, {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: "style-loader!css-loader!postcss-loader"
+      }],
+    },
+    postcss: function() {
+      return {
+        defaults: [autoprefixer, precss],
+        cleaner: [autoprefixer({ browsers: ['last 2 versions'] })]
+      }
+    },
+    plugins: [
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.CommonsChunkPlugin('dist/vendors', 'dist/vendors.bundle.js'),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': env
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+          drop_console: true
+        },
+        mangle: {
+          except: ['$super', '$', 'exports', 'require']
+        }
+      }),
+      new HTMLWebpackPlugin({
+        template: path.resolve(__dirname, '..', 'node_modules/html-webpack-template/index.ejs'),
+        title: 'React Redux GraphQL',
+        chunks: ['dist/vendors', 'dist/bundle'],
+        filename: 'index.html',
+        appMountId: 'app',
+        inject: false,
+        mobile: true,
+        hash: false,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          collapseInlineTagWhitespace: true,
+        }
+      }),
+    ]
+  }
 }
 ```
 
@@ -239,9 +239,9 @@ var env = process.env.NODE_ENV
 env = JSON.stringify(env)
 
 if (env === '"development"') {
-	module.exports = require('./webpack/webpack.config.dev.js')(env)
+  module.exports = require('./webpack/webpack.config.dev.js')(env)
 } else if (env === '"production"') {
-	module.exports = require('./webpack/webpack.config.prod.js')(env)
+  module.exports = require('./webpack/webpack.config.prod.js')(env)
 }
 ```
 
@@ -263,20 +263,20 @@ const APP_PORT = 3000
 var compiler = webpack(webpackConfig)
 
 var app = new WebpackDevServer(compiler, {
-	contentBase: '/public/',
-	stats: {
-		chunks: false,
-		colors: true,
-	}
+  contentBase: '/public/',
+  stats: {
+    chunks: false,
+    colors: true,
+  }
 })
 
 app.use('/', express.static(path.resolve(__dirname, '..', 'public')))
 app.listen(APP_PORT, (err) => {
-	if (err) {
-		console.log(err)
-	} else {
-		console.log(`App is running at http://localhost:${APP_PORT}`)
-	}
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(`App is running at http://localhost:${APP_PORT}`)
+  }
 })
 ```
 
@@ -294,11 +294,11 @@ let app = express()
 
 app.use('/', express.static(path.resolve(__dirname, '..', 'public')))
 app.listen(APP_PORT, (err) => {
-	if (err) {
-		console.log(err)
-	} else {
-		console.log(`App is running at http://localhost:${APP_PORT}`)
-	}
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(`App is running at http://localhost:${APP_PORT}`)
+  }
 })
 ```
 
@@ -313,9 +313,9 @@ var env = process.env.NODE_ENV
 env = JSON.stringify(env)
 
 if (env === '"development"') {
-	require('./server/server.dev.js')
+  require('./server/server.dev.js')
 } else if (env === '"production"') {
-	require('./server/server.prod.js')
+  require('./server/server.prod.js')
 }
 ```
 
@@ -327,42 +327,42 @@ The *server.js* serves server configuration depending on *NODE_ENV*, as webpack'
 
 ```json
 {
-	"name": "tutorial-react-redux-graphql",
-	"private": true,
-	"version": "0.1.0",
-	"description": "Simple React Redux example with GraphQL",
-	"main": "server.js",
-	"scripts": {
-		"build-prod": "node ./node_modules/webpack/bin/webpack.js && node ./server.js",
-		"prod": "node ./node_modules/cross-env/bin/cross-env.js NODE_ENV=production npm run build-prod",
-		"build-dev": "node ./server.js",
-		"dev": "node ./node_modules/cross-env/bin/cross-env.js NODE_ENV=development npm run build-dev",
-		"start": "npm run prod"
-	},
-	"dependencies": {
-		"autoprefixer": "",
-		"babel-core": "",
-		"babel-loader": "",
-		"babel-polyfill": "",
-		"babel-preset-es2015": "",
-		"babel-preset-react": "",
-		"babel-preset-stage-0": "",
-		"babel-register": "",
-		"cross-env": "",
-		"css-loader": "",
-		"express": "",
-		"html-webpack-plugin": "",
-		"html-webpack-template": "",
-		"postcss-loader": "",
-		"precss": "",
-		"react": "",
-		"react-dom": "",
-		"style-loader": "",
-		"webpack": ""
-	},
-	"devDependencies": {
-		"webpack-dev-server": ""
-	}
+  "name": "tutorial-react-redux-graphql",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Simple React Redux example with GraphQL",
+  "main": "server.js",
+  "scripts": {
+    "build-prod": "node ./node_modules/webpack/bin/webpack.js && node ./server.js",
+    "prod": "node ./node_modules/cross-env/bin/cross-env.js NODE_ENV=production npm run build-prod",
+    "build-dev": "node ./server.js",
+    "dev": "node ./node_modules/cross-env/bin/cross-env.js NODE_ENV=development npm run build-dev",
+    "start": "npm run prod"
+  },
+  "dependencies": {
+    "autoprefixer": "",
+    "babel-core": "",
+    "babel-loader": "",
+    "babel-polyfill": "",
+    "babel-preset-es2015": "",
+    "babel-preset-react": "",
+    "babel-preset-stage-0": "",
+    "babel-register": "",
+    "cross-env": "",
+    "css-loader": "",
+    "express": "",
+    "html-webpack-plugin": "",
+    "html-webpack-template": "",
+    "postcss-loader": "",
+    "precss": "",
+    "react": "",
+    "react-dom": "",
+    "style-loader": "",
+    "webpack": ""
+  },
+  "devDependencies": {
+    "webpack-dev-server": ""
+  }
 }
 ```
 
@@ -376,7 +376,7 @@ Now will be a nice time to install all the packages, just run `npm install` or `
 
 ```json
 {
-	"presets": ["es2015", "stage-0", "react"]
+  "presets": ["es2015", "stage-0", "react"]
 }
 ```
 
@@ -399,8 +399,8 @@ import ReactDOM from 'react-dom'
 import App from './components/App'
 
 ReactDOM.render(
-	<App/>,
-	document.getElementById('app')
+  <App/>,
+  document.getElementById('app')
 )
 ```
 
@@ -410,13 +410,13 @@ In *src/index.js* I'm using `babel-polyfill` to enable ES6/7 features compatibil
 import React from 'react'
 
 class App extends React.Component {
-	render() {
-		return (
-			<div>
-				<i>Hello</i>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <i>Hello</i>
+      </div>
+    );
+  }
 }
 
 export default App;
@@ -437,62 +437,62 @@ import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 
 class App extends React.Component {
-	state = {
-		todos: [
-			{ id: "0", text: 'Todo 0', completed: false },
-			{ id: "1", text: 'Todo 1', completed: false }
-		]
-	}
-	todoID = () => {
-		return Date.now().toString()
-	}
-	receiveTodos = () => {
-		return this.state.todos
-	}
-	addTodo = (text) => {
-		if (text.trim().length <= 0) {
-			return;
-		}
-		let id = this.todoID()
-		let todos = [
-			...this.state.todos, {
-				id: id,
-				text: text,
-				completed: false
-			}
-		]
-		this.setState({
-			todos: todos
-		})
-	}
-	toggleTodo = (id) => {
-		let todos = this.state.todos.map(todo => {
-			if (todo.id !== id) {
-				return todo
-			}
-			return {
-				...todo,
-				completed: !todo.completed
-			}
-		})
-		this.setState({
-			todos: todos
-		})
-	}
-	render() {
-		return (
-			<div>
-				<AddTodo
-					addTodo={this.addTodo}
-				/>
-				<TodoList
-					todos={this.state.todos}
-					onTodoClick={this.toggleTodo}
-					receiveTodos={this.receiveTodos}
-				/>
-			</div>
-		);
-	}
+  state = {
+    todos: [
+      { id: "0", text: 'Todo 0', completed: false },
+      { id: "1", text: 'Todo 1', completed: false }
+    ]
+  }
+  todoID = () => {
+    return Date.now().toString()
+  }
+  receiveTodos = () => {
+    return this.state.todos
+  }
+  addTodo = (text) => {
+    if (text.trim().length <= 0) {
+      return;
+    }
+    let id = this.todoID()
+    let todos = [
+      ...this.state.todos, {
+        id: id,
+        text: text,
+        completed: false
+      }
+    ]
+    this.setState({
+      todos: todos
+    })
+  }
+  toggleTodo = (id) => {
+    let todos = this.state.todos.map(todo => {
+      if (todo.id !== id) {
+        return todo
+      }
+      return {
+        ...todo,
+        completed: !todo.completed
+      }
+    })
+    this.setState({
+      todos: todos
+    })
+  }
+  render() {
+    return (
+      <div>
+        <AddTodo
+          addTodo={this.addTodo}
+        />
+        <TodoList
+          todos={this.state.todos}
+          onTodoClick={this.toggleTodo}
+          receiveTodos={this.receiveTodos}
+        />
+      </div>
+    );
+  }
 }
 
 export default App
@@ -514,11 +514,11 @@ The *addTodo* function just adds a *todo* to the *todos* key of *state*. Notice 
 
 ```javascript
 let todos = [
-	...this.state.todos, {
-		id: id,
-		text: text,
-		completed: false
-	}
+  ...this.state.todos, {
+    id: id,
+    text: text,
+    completed: false
+  }
 ]
 ```
 
@@ -534,19 +534,19 @@ Finally in the *render* function, I've rendered *AddTodo* and *TodoList* compone
 import React from 'react'
 
 class AddTodo extends React.Component {
-	render() {
-		let { addTodo } = this.props;
-		let input;
-		return (
-			<div>
-				<input type="text" placeholder="Enter Todo" ref={i => input = i}/>
-				<input type="button" value="Add Todo" onClick={() => {
-					addTodo(input.value)
-					input.value = ''
-				}}/>
-			</div>
-		)
-	}
+  render() {
+    let { addTodo } = this.props;
+    let input;
+    return (
+      <div>
+        <input type="text" placeholder="Enter Todo" ref={i => input = i}/>
+        <input type="button" value="Add Todo" onClick={() => {
+          addTodo(input.value)
+          input.value = ''
+        }}/>
+      </div>
+    )
+  }
 }
 
 export default AddTodo
@@ -560,41 +560,41 @@ The *src/components/AddTodo.js* component receives *addTodo* property from *src/
 import React from 'react'
 
 const Todo = ({ text, completed, onClick }) =&gt; {
-	return (
-		<li
-			onClick={onClick}
-			style={ {textDecoration: completed ? 'line-through' : 'none'} }
-		>
-			{ text }
-		</li>
-	)
+  return (
+    <li
+      onClick={onClick}
+      style={ {textDecoration: completed ? 'line-through' : 'none'} }
+    >
+      { text }
+    </li>
+  )
 }
 
 class TodoList extends React.Component {
-	componentDidMount() {
-		this.props.receiveTodos()
-	}
-	render() {
-		const { todos, onTodoClick, receiveTodos } = this.props
-		return (
-			<div>
-				<button onClick={() => receiveTodos()}>RECEIVE</button>
-				<ul>
-					{
-						todos.map(todo => {
-							return (
-								<Todo
-									key={todo.id}
-									{...todo}
-									onClick={() => onTodoClick(todo.id)}
-								/>
-							)
-						})
-					}
-				</ul>
-			</div>
-		)
-	}
+  componentDidMount() {
+    this.props.receiveTodos()
+  }
+  render() {
+    const { todos, onTodoClick, receiveTodos } = this.props
+    return (
+      <div>
+        <button onClick={() => receiveTodos()}>RECEIVE</button>
+        <ul>
+          {
+            todos.map(todo => {
+              return (
+                <Todo
+                  key={todo.id}
+                  {...todo}
+                  onClick={() => onTodoClick(todo.id)}
+                />
+              )
+            })
+          }
+        </ul>
+      </div>
+    )
+  }
 }
 
 export default TodoList
@@ -665,12 +665,12 @@ In *webpack/vendors.js* only the new *ReduxJS* related packages has been added.
 
 ```javascript
 module.exports = [
-	"babel-polyfill",
-	"react",
-	"react-dom",
-	"react-redux",
-	"redux",
-	"redux-thunk"
+  "babel-polyfill",
+  "react",
+  "react-dom",
+  "react-redux",
+  "redux",
+  "redux-thunk"
 ]
 ```
 
@@ -686,7 +686,7 @@ In *ReduxJS* build process, rather than going from *index.js* to downwards, we'l
 
 ```json
 {
-	"type": "NAME_OF_THE_ACTION/ANYTHING YOU WISH"
+  "type": "NAME_OF_THE_ACTION/ANYTHING YOU WISH"
 }
 ```
 
@@ -696,106 +696,106 @@ The above one is the simplest form of an *action* in *ReduxJS*. But is it? Yes, 
 
 ```javascript
 let dbTodoList = {
-	todos: [
-		{ id: 0, text: 'Todo 0', completed: false },
-		{ id: 1, text: 'Todo 1', completed: false }
-	]
+  todos: [
+    { id: 0, text: 'Todo 0', completed: false },
+    { id: 1, text: 'Todo 1', completed: false }
+  ]
 }
 
 export const CONSTANTS = {
-	'ADD_TODO': 'ADD_TODO',
-	'TOGGLE_TODO': 'TOGGLE_TODO',
-	'ASYNC_ACTION': 'ASYNC_ACTION',
-	'RECEIVE_TODOS': 'RECEIVE_TODOS'
+  'ADD_TODO': 'ADD_TODO',
+  'TOGGLE_TODO': 'TOGGLE_TODO',
+  'ASYNC_ACTION': 'ASYNC_ACTION',
+  'RECEIVE_TODOS': 'RECEIVE_TODOS'
 }
 
 const todoID = () => {
-	return Date.now().toString()
+  return Date.now().toString()
 }
 
 const asyncGetTodos = () => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve(dbTodoList)
-		}, 2000)
-	})
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(dbTodoList)
+    }, 2000)
+  })
 }
 
 const asyncAddTodo = (text) => {
-	let id = todoID()
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			dbTodoList.todos = [
-				...dbTodoList.todos, {
-					id: id,
-					text: text,
-					completed: false
-				}
-			]
-			resolve(id)
-		}, 2000)
-	})
+  let id = todoID()
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      dbTodoList.todos = [
+        ...dbTodoList.todos, {
+          id: id,
+          text: text,
+          completed: false
+        }
+      ]
+      resolve(id)
+    }, 2000)
+  })
 }
 
 const asyncToogleTodo = (id) => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			dbTodoList.todos = dbTodoList.todos.map(todo => {
-				if (todo.id !== id) {
-					return todo
-				}
-				return {
-					...todo,
-					completed: !todo.completed
-				}
-			})
-			resolve(id)
-		}, 2000)
-	})
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      dbTodoList.todos = dbTodoList.todos.map(todo => {
+        if (todo.id !== id) {
+          return todo
+        }
+        return {
+          ...todo,
+          completed: !todo.completed
+        }
+      })
+      resolve(id)
+    }, 2000)
+  })
 }
 
 const asyncAction = () => {
-	return {
-		type: CONSTANTS['ASYNC_ACTION']
-	}
+  return {
+    type: CONSTANTS['ASYNC_ACTION']
+  }
 }
 
 export const receiveTodos = () => {
-	return (dispatch) => {
-		dispatch(asyncAction())
-		return asyncGetTodos()
-			.then(todoList => dispatch({
-				type: CONSTANTS['RECEIVE_TODOS'],
-				todos: todoList.todos
-			}))
-	}
+  return (dispatch) => {
+    dispatch(asyncAction())
+    return asyncGetTodos()
+      .then(todoList => dispatch({
+        type: CONSTANTS['RECEIVE_TODOS'],
+        todos: todoList.todos
+      }))
+  }
 }
 
 export const addTodo = (text) => {
-	return (dispatch) => {
-		dispatch(asyncAction())
-		return asyncAddTodo(text)
-			.then(id => {
-				dispatch({
-					type: CONSTANTS['ADD_TODO'],
-					text: text,
-					id: id
-				})
-			})
-	}
+  return (dispatch) => {
+    dispatch(asyncAction())
+    return asyncAddTodo(text)
+      .then(id => {
+        dispatch({
+          type: CONSTANTS['ADD_TODO'],
+          text: text,
+          id: id
+        })
+      })
+  }
 }
 
 export const toggleTodo = (id) => {
-	return (dispatch) => {
-		dispatch(asyncAction())
-		return asyncToogleTodo(id)
-			.then(id => {
-				dispatch({
-					type: CONSTANTS['TOGGLE_TODO'],
-					id
-				})
-			})
-	}
+  return (dispatch) => {
+    dispatch(asyncAction())
+    return asyncToogleTodo(id)
+      .then(id => {
+        dispatch({
+          type: CONSTANTS['TOGGLE_TODO'],
+          id
+        })
+      })
+  }
 }
 ```
 
@@ -831,14 +831,14 @@ The first *asyncAction* *action* is to let your app that, an *action* is perform
 
 ```javascript
 function reducerFunction(state = initialState, action) {
-	switch (action.type) {
-		case 'THIS_ACTION_HAPPENED':
-			return NEW_STATE
-		case 'DIFFERENT_ACTION_HAPPENED':
-			return DIFFERENT_NEW_STATE
-		default:
-			return state
-	}
+  switch (action.type) {
+    case 'THIS_ACTION_HAPPENED':
+      return NEW_STATE
+    case 'DIFFERENT_ACTION_HAPPENED':
+      return DIFFERENT_NEW_STATE
+    default:
+      return state
+  }
 }
 ```
 
@@ -854,7 +854,7 @@ So, how can we implement a *pure function*? Let's take the *todoID* function and
 
 ```javascript
 function todoID(currentTime) {
-	return currentTime.toString()
+  return currentTime.toString()
 }
 ```
 
@@ -864,7 +864,7 @@ So, basically,
 
 ```javascript
 function add(a, b) {
-	return a + b
+  return a + b
 }
 ```
 
@@ -873,7 +873,7 @@ is a *Pure Function*. Where,
 ```javascript
 var a = 1;
 function add(b) {
-	return a + b
+  return a + b
 }
 ```
 
@@ -895,71 +895,71 @@ import { combineReducers } from 'redux'
 import { CONSTANTS } from '../actions'
 
 const todoHandler = (todo, action) => {
-	switch (action.type) {
-		case CONSTANTS['ADD_TODO']:
-			return {
-				id: action.id,
-				text: action.text,
-				completed: false
-			};
-		case CONSTANTS['TOGGLE_TODO']:
-			if (todo.id !== action.id) {
-				return todo
-			}
-			return {
-				...todo,
-				completed: !todo.completed
-			};
-		default:
-			return todo
-	}
+  switch (action.type) {
+    case CONSTANTS['ADD_TODO']:
+      return {
+        id: action.id,
+        text: action.text,
+        completed: false
+      };
+    case CONSTANTS['TOGGLE_TODO']:
+      if (todo.id !== action.id) {
+        return todo
+      }
+      return {
+        ...todo,
+        completed: !todo.completed
+      };
+    default:
+      return todo
+  }
 }
 
 let initialState = {
-	todos: [],
-	isFetching: false
+  todos: [],
+  isFetching: false
 }
 
 const todosHandler = (state = initialState.todos, action) => {
-	switch (action.type) {
-		case CONSTANTS['ADD_TODO']:
-			return [
-				...state,
-				todoHandler(undefined, action)
-			];
-		case CONSTANTS['TOGGLE_TODO']:
-			return state.map(todo =>
-				todoHandler(todo, action)
-			)
-		default:
-			return state
-	}
+  switch (action.type) {
+    case CONSTANTS['ADD_TODO']:
+      return [
+        ...state,
+        todoHandler(undefined, action)
+      ];
+    case CONSTANTS['TOGGLE_TODO']:
+      return state.map(todo =>
+        todoHandler(todo, action)
+      )
+    default:
+      return state
+  }
 }
 
 const todoListHandler = (state = initialState, action) => {
-	switch (action.type) {
-		case CONSTANTS['ASYNC_ACTION']:
-			return Object.assign({}, state, {
-				isFetching: true
-			})
-		case CONSTANTS['RECEIVE_TODOS']:
-			return Object.assign({}, state, {
-				isFetching: false,
-				todos: action.todos
-			})
-		case CONSTANTS['ADD_TODO']:
-		case CONSTANTS['TOGGLE_TODO']:
-			return Object.assign({}, state, {
-				isFetching: false,
-				todos: todosHandler(state.todos, action)
-			})
-		default:
-			return state
-	}
+  switch (action.type) {
+    case CONSTANTS['ASYNC_ACTION']:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case CONSTANTS['RECEIVE_TODOS']:
+      return Object.assign({}, state, {
+        isFetching: false,
+        todos: action.todos
+      })
+    case CONSTANTS['ADD_TODO']:
+    case CONSTANTS['TOGGLE_TODO']:
+      return Object.assign({}, state, {
+        isFetching: false,
+        todos: todosHandler(state.todos, action)
+      })
+    default:
+      return state
+  }
 }
 
 const todoApp = combineReducers({
-	todoList: todoListHandler
+  todoList: todoListHandler
 });
 
 export default todoApp
@@ -993,15 +993,15 @@ import thunkMiddleware from 'redux-thunk'
 let middlewares = [thunkMiddleware]
 
 if (JSON.stringify(process.env.NODE_ENV) === '"development"') {
-	var loggerMiddleware = require('redux-logger')
-	middlewares = [...middlewares, loggerMiddleware()]
+  var loggerMiddleware = require('redux-logger')
+  middlewares = [...middlewares, loggerMiddleware()]
 }
 
 import todoReducers from '../reducers'
 
 export default createStore(
-	todoReducers,
-	applyMiddleware(...middlewares)
+  todoReducers,
+  applyMiddleware(...middlewares)
 )
 ```
 
@@ -1022,16 +1022,16 @@ import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 
 let AddTodo = ({ dispatch }) => {
-	let input;
-	return (
-		<div>
-			<input type="text" placeholder="Enter Todo" ref={i => input = i}/>
-			<input type="button" value="Add Todo" onClick={() => {
-				dispatch(addTodo(input.value))
-				input.value = ''
-			}}/>
-		</div>
-	)
+  let input;
+  return (
+    <div>
+      <input type="text" placeholder="Enter Todo" ref={i => input = i}/>
+      <input type="button" value="Add Todo" onClick={() => {
+        dispatch(addTodo(input.value))
+        input.value = ''
+      }}/>
+    </div>
+  )
 }
 
 export default connect()(AddTodo)
@@ -1051,64 +1051,64 @@ import { connect } from 'react-redux'
 import { toggleTodo, receiveTodos } from '../actions'
 
 const Todo = ({ text, completed, onClick }) => {
-	return (
-		<li
-			onClick={onClick}
-			style={ {textDecoration: completed ? 'line-through' : 'none'} }
-		>
-			{ text }
-		</li>
-	)
+  return (
+    <li
+      onClick={onClick}
+      style={ {textDecoration: completed ? 'line-through' : 'none'} }
+    >
+      { text }
+    </li>
+  )
 }
 
 class TodoList extends Component {
-	componentDidMount() {
-		const { receiveTodos } = this.props
-		receiveTodos()
-	}
-	render() {
-		const { todos, onTodoClick, receiveTodos } = this.props
-		return (
-			<div>
-				<button onClick={() => receiveTodos()}>RECEIVE</button>
-				<ul>
-					{
-						todos.map(todo => {
-							return (
-								<Todo
-									key={todo.id}
-									{...todo}
-									onClick={() => onTodoClick(todo.id)}
-								/>
-							)
-						})
-					}
-				</ul>
-			</div>
-		)
-	}
+  componentDidMount() {
+    const { receiveTodos } = this.props
+    receiveTodos()
+  }
+  render() {
+    const { todos, onTodoClick, receiveTodos } = this.props
+    return (
+      <div>
+        <button onClick={() => receiveTodos()}>RECEIVE</button>
+        <ul>
+          {
+            todos.map(todo => {
+              return (
+                <Todo
+                  key={todo.id}
+                  {...todo}
+                  onClick={() => onTodoClick(todo.id)}
+                />
+              )
+            })
+          }
+        </ul>
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
-	return {
-		todos: state.todoList.todos
-	}
+  return {
+    todos: state.todoList.todos
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return {
-		onTodoClick: (id) => {
-			dispatch(toggleTodo(id))
-		},
-		receiveTodos: () => {
-			dispatch(receiveTodos())
-		}
-	}
+  return {
+    onTodoClick: (id) => {
+      dispatch(toggleTodo(id))
+    },
+    receiveTodos: () => {
+      dispatch(receiveTodos())
+    }
+  }
 }
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(TodoList)
 ```
 
@@ -1137,14 +1137,14 @@ import AddTodo from '../containers/AddTodo'
 import TodoList from '../containers/TodoList'
 
 class App extends React.Component {
-	render() {
-		return (
-			<div>
-				<AddTodo/>
-				<TodoList/>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <AddTodo/>
+        <TodoList/>
+      </div>
+    );
+  }
 }
 
 export default App
@@ -1198,13 +1198,13 @@ npm install -S express-graphql graphql isomorphic-fetch
 
 ```javascript
 module.exports = [
-	"babel-polyfill",
-	"isomorphic-fetch",
-	"react",
-	"react-dom",
-	"react-redux",
-	"redux",
-	"redux-thunk"
+  "babel-polyfill",
+  "isomorphic-fetch",
+  "react",
+  "react-dom",
+  "react-redux",
+  "redux",
+  "redux-thunk"
 ]
 ```
 
@@ -1224,27 +1224,27 @@ const APP_PORT = 3000
 var compiler = webpack(webpackConfig)
 
 var app = new WebpackDevServer(compiler, {
-	contentBase: '/public/',
-	stats: {
-		chunks: false,
-		colors: true,
-	}
+  contentBase: '/public/',
+  stats: {
+    chunks: false,
+    colors: true,
+  }
 });
 
 app.use('/', express.static(path.resolve(__dirname, '..', 'public')))
 app.use('/graphql', GraphQLHTTP((req) => {
-	return {
-		schema: schema,
-		graphiql: true
-	}
+  return {
+    schema: schema,
+    graphiql: true
+  }
 }))
 app.listen(APP_PORT, (err) => {
-	if (err) {
-		console.log(err)
-	} else {
-		console.log(`GraphQL is serving at http://localhost:${APP_PORT}`)
-		console.log(`App is running at http://localhost:${APP_PORT}`)
-	}
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(`GraphQL is serving at http://localhost:${APP_PORT}`)
+    console.log(`App is running at http://localhost:${APP_PORT}`)
+  }
 })
 ```
 
@@ -1262,18 +1262,18 @@ let app = express()
 
 app.use('/', express.static(path.resolve(__dirname, '..', 'public')))
 app.use('/graphql', GraphQLHTTP((req) => {
-	return {
-		schema: schema,
-		graphiql: true
-	}
+  return {
+    schema: schema,
+    graphiql: true
+  }
 }))
 app.listen(APP_PORT, (err) => {
-	if (err) {
-		console.log(err)
-	} else {
-		console.log(`GraphQL is serving at http://localhost:${APP_PORT}`)
-		console.log(`App is running at http://localhost:${APP_PORT}`)
-	}
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(`GraphQL is serving at http://localhost:${APP_PORT}`)
+    console.log(`App is running at http://localhost:${APP_PORT}`)
+  }
 })
 ```
 
@@ -1288,38 +1288,38 @@ In *GraphQL* build process our main concentration will be building a *GraphQL sc
 
 ```javascript
 let dbTodoList = {
-	todos: [
-		{ id: "0", text: 'Todo 0', completed: false },
-		{ id: "1", text: 'Todo 1', completed: false }
-	]
+  todos: [
+    { id: "0", text: 'Todo 0', completed: false },
+    { id: "1", text: 'Todo 1', completed: false }
+  ]
 }
 
 export const getTodos = () => {
-	return dbTodoList
+  return dbTodoList
 }
 
 export const addTodo = ({ id, text }) => {
-	dbTodoList.todos = [
-		...dbTodoList.todos, {
-			id: id,
-			text: text,
-			completed: false
-		}
-	]
-	return id
+  dbTodoList.todos = [
+    ...dbTodoList.todos, {
+      id: id,
+      text: text,
+      completed: false
+    }
+  ]
+  return id
 }
 
 export const toggleTodo = ({ id }) => {
-	database.todos = database.todos.map(todo => {
-		if (todo.id !== id) {
-			return todo
-		}
-		return {
-			...todo,
-			completed: !todo.completed
-		}
-	})
-	return id
+  database.todos = database.todos.map(todo => {
+    if (todo.id !== id) {
+      return todo
+    }
+    return {
+      ...todo,
+      completed: !todo.completed
+    }
+  })
+  return id
 }
 ```
 
@@ -1327,107 +1327,107 @@ export const toggleTodo = ({ id }) => {
 
 ```javascript
 import {
-	GraphQLBoolean,
-	GraphQLList,
-	GraphQLNonNull,
-	GraphQLObjectType,
-	GraphQLSchema,
-	GraphQLString,
+  GraphQLBoolean,
+  GraphQLList,
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString,
 } from 'graphql'
 
 import { getTodos, addTodo, toggleTodo } from '../data'
 
 const todoType = new GraphQLObjectType({
-	name: 'ToDo',
-	description: 'Single instance of a todo',
-	fields: {
-		id: {
-			type: GraphQLString,
-			description: 'ID of the todo item'
-		},
-		text: {
-			type: GraphQLString,
-			description: 'Text of the todo item'
-		},
-		completed: {
-			type: GraphQLBoolean,
-			description: 'Completion status of the todo item'
-		}
-	}
+  name: 'ToDo',
+  description: 'Single instance of a todo',
+  fields: {
+    id: {
+      type: GraphQLString,
+      description: 'ID of the todo item'
+    },
+    text: {
+      type: GraphQLString,
+      description: 'Text of the todo item'
+    },
+    completed: {
+      type: GraphQLBoolean,
+      description: 'Completion status of the todo item'
+    }
+  }
 })
 
 const todosType = new GraphQLObjectType({
-	name: 'Todos',
-	description: 'List of Todos',
-	fields: {
-		todos: {
-			type: new GraphQLList(todoType),
-			resolve: (data) => {
-				return data.map(todo => todo)
-			}
-		}
-	}
+  name: 'Todos',
+  description: 'List of Todos',
+  fields: {
+    todos: {
+      type: new GraphQLList(todoType),
+      resolve: (data) => {
+        return data.map(todo => todo)
+      }
+    }
+  }
 })
 
 const queryType = new GraphQLObjectType({
-	name: 'Query',
-	fields: () => ({
-		todos: {
-			type: new GraphQLList(todoType),
-			resolve: (root) => {
-				return getTodos().todos.map(todo => todo)
-			}
-		},
-	}),
+  name: 'Query',
+  fields: () => ({
+    todos: {
+      type: new GraphQLList(todoType),
+      resolve: (root) => {
+        return getTodos().todos.map(todo => todo)
+      }
+    },
+  }),
 })
 
 const addTodoMutation = {
-	name: 'AddTodoMutation',
-	description: 'Mutation for adding todo',
-	type: GraphQLString,
-	args: {
-		text: {
-			type: new GraphQLNonNull(GraphQLString),
-			description: 'Text of the todo'
-		},
-		id: {
-			type: new GraphQLNonNull(GraphQLString),
-			description: 'ID of the todo'
-		}
-	},
-	resolve: (root, args) => {
-		let { id, text } = args
-		return addTodo({ id, text })
-	}
+  name: 'AddTodoMutation',
+  description: 'Mutation for adding todo',
+  type: GraphQLString,
+  args: {
+    text: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'Text of the todo'
+    },
+    id: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'ID of the todo'
+    }
+  },
+  resolve: (root, args) => {
+    let { id, text } = args
+    return addTodo({ id, text })
+  }
 }
 
 const toggleTodoMutation = {
-	name: 'ToogleTodoMutation',
-	description: 'Mutation for toggling todo status',
-	type: GraphQLString,
-	args: {
-		id: {
-			type: new GraphQLNonNull(GraphQLString),
-			description: 'ID of the todo'
-		}
-	},
-	resolve: (root, args) => {
-		let { id } = args
-		return toggleTodo({ id })
-	}
+  name: 'ToogleTodoMutation',
+  description: 'Mutation for toggling todo status',
+  type: GraphQLString,
+  args: {
+    id: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'ID of the todo'
+    }
+  },
+  resolve: (root, args) => {
+    let { id } = args
+    return toggleTodo({ id })
+  }
 }
 
 const mutationType = new GraphQLObjectType({
-	name: 'Mutation',
-	fields: () => ({
-		addTodo: addTodoMutation,
-		toggleTodo: toggleTodoMutation
-	})
+  name: 'Mutation',
+  fields: () => ({
+    addTodo: addTodoMutation,
+    toggleTodo: toggleTodoMutation
+  })
 })
 
 const Schema = new GraphQLSchema({
-	query: queryType,
-	mutation: mutationType
+  query: queryType,
+  mutation: mutationType
 })
 
 export default Schema
@@ -1457,55 +1457,55 @@ import fetch from 'isomorphic-fetch'
 const graphqlServer = window.location.origin + '/graphql'
 
 const todoID = () => {
-	return Date.now().toString()
+  return Date.now().toString()
 }
 
 const graphQLFetcher = (graphQLParams) => {
-	return new Promise((resolve, reject) => {
-		fetch(graphqlServer, {
-			method: 'post',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/graphql'
-			},
-			body: graphQLParams,
-		}).then(response => resolve(response.json()))
-	})
+  return new Promise((resolve, reject) => {
+    fetch(graphqlServer, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/graphql'
+      },
+      body: graphQLParams,
+    }).then(response => resolve(response.json()))
+  })
 }
 
 export const asyncGetTodos = () => {
-	return new Promise((resolve, reject) => {
-		graphQLFetcher(`
-			query {
-				todos {
-					id,
-					text,
-					completed
-				}
-			}
-		`).then(json => resolve(json.data))
-	})
+  return new Promise((resolve, reject) => {
+    graphQLFetcher(`
+      query {
+        todos {
+          id,
+          text,
+          completed
+        }
+      }
+    `).then(json => resolve(json.data))
+  })
 }
 
 export const asyncAddTodo = (text) => {
-	let id = todoID()
-	return new Promise((resolve, reject) => {
-		graphQLFetcher(`
-			mutation {
-				addTodo(text: "${text}", id: "${id}")
-			}
-		`).then(json => resolve(json.data.addTodo))
-	})
+  let id = todoID()
+  return new Promise((resolve, reject) => {
+    graphQLFetcher(`
+      mutation {
+        addTodo(text: "${text}", id: "${id}")
+      }
+    `).then(json => resolve(json.data.addTodo))
+  })
 }
 
 export const asyncToogleTodo = (id) => {
-	return new Promise((resolve, reject) => {
-		graphQLFetcher(`
-			mutation {
-			toggleTodo(id: "${id}")
-			}
-		`).then(json => resolve(json.data.toggleTodo))
-	})
+  return new Promise((resolve, reject) => {
+    graphQLFetcher(`
+      mutation {
+      toggleTodo(id: "${id}")
+      }
+    `).then(json => resolve(json.data.toggleTodo))
+  })
 }
 ```
 
@@ -1513,60 +1513,60 @@ export const asyncToogleTodo = (id) => {
 
 ```javascript
 import {
-	asyncGetTodos,
-	asyncAddTodo,
-	asyncToogleTodo
+  asyncGetTodos,
+  asyncAddTodo,
+  asyncToogleTodo
 } from './graphQLFetcher'
 
 export const CONSTANTS = {
-	'ADD_TODO': 'ADD_TODO',
-	'TOGGLE_TODO': 'TOGGLE_TODO',
-	'ASYNC_ACTION': 'ASYNC_ACTION',
-	'RECEIVE_TODOS': 'RECEIVE_TODOS'
+  'ADD_TODO': 'ADD_TODO',
+  'TOGGLE_TODO': 'TOGGLE_TODO',
+  'ASYNC_ACTION': 'ASYNC_ACTION',
+  'RECEIVE_TODOS': 'RECEIVE_TODOS'
 }
 
 const asyncAction = () => {
-	return {
-		type: CONSTANTS['ASYNC_ACTION']
-	}
+  return {
+    type: CONSTANTS['ASYNC_ACTION']
+  }
 }
 
 export const receiveTodos = () => {
-	return (dispatch) => {
-		dispatch(asyncAction())
-		return asyncGetTodos()
-			.then(todoList => dispatch({
-				type: CONSTANTS['RECEIVE_TODOS'],
-				todos: todoList.todos
-			}))
-	}
+  return (dispatch) => {
+    dispatch(asyncAction())
+    return asyncGetTodos()
+      .then(todoList => dispatch({
+        type: CONSTANTS['RECEIVE_TODOS'],
+        todos: todoList.todos
+      }))
+  }
 }
 
 export const addTodo = (text) => {
-	return (dispatch) => {
-		dispatch(asyncAction())
-		return asyncAddTodo(text)
-			.then(id => {
-				dispatch({
-					type: CONSTANTS['ADD_TODO'],
-					text: text,
-					id: id
-				})
-			})
-	}
+  return (dispatch) => {
+    dispatch(asyncAction())
+    return asyncAddTodo(text)
+      .then(id => {
+        dispatch({
+          type: CONSTANTS['ADD_TODO'],
+          text: text,
+          id: id
+        })
+      })
+  }
 }
 
 export const toggleTodo = (id) => {
-	return (dispatch) => {
-		dispatch(asyncAction())
-		return asyncToogleTodo(id)
-			.then(id => {
-				dispatch({
-					type: CONSTANTS['TOGGLE_TODO'],
-					id
-				})
-			})
-	}
+  return (dispatch) => {
+    dispatch(asyncAction())
+    return asyncToogleTodo(id)
+      .then(id => {
+        dispatch({
+          type: CONSTANTS['TOGGLE_TODO'],
+          id
+        })
+      })
+  }
 }
 ```
 
