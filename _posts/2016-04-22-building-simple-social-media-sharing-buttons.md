@@ -6,7 +6,7 @@ keywords: "social,media,share,button,twitter,facebook,googleplus,reddit,linkedin
 layout: post
 tagline: "Building simple social media sharing buttons without any external libraries."
 tags: ["html", "css", "javascript"]
-thumbnail: "/assets/posts/2016-04-22-building-simple-social-media-sharing-buttons/social-media-sharing-buttons.png"
+thumbnail: "/assets/posts/2016/social-media-sharing-buttons.png"
 title:  "Building Simple Social Media Sharing Buttons Without Any External Libraries"
 post_url: 2016-04-22-building-simple-social-media-sharing-buttons
 ---
@@ -18,7 +18,7 @@ Due to the amazing growth of social-medias it has become an important aspect to 
 ## What We Will Build?
 
 <figure class="amms-gb-img-figure-centered">
-	<img src="/assets/posts/2016-04-22-building-simple-social-media-sharing-buttons/social-media-sharing-buttons.png" alt="Simple Social Share Button" title="Simple Social Share Button">
+	<img src="/assets/posts/2016/social-media-sharing-buttons.png" alt="Simple Social Share Button" title="Simple Social Share Button">
 	<figcaption>Simple Social Share Button</figcaption>
 </figure>
 

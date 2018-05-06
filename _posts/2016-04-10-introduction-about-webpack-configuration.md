@@ -6,14 +6,14 @@ keywords: "webpack,configuration,javascript,js,nodejs,npm,module,bundler"
 layout: post
 tagline: "Webpack is a module bundler with potential of replacing other task runners, which minimizes the development workload while keeping the configuration process as simple as possible."
 tags: ["webpack", "nodejs", "javascript"]
-thumbnail: "/assets/posts/2016-04-10-introduction-about-webpack-configuration/what-is-webpack.png"
+thumbnail: "/assets/posts/2016/what-is-webpack.png"
 title:  "An Introduction about Webpack Configuration"
 post_url: 2016-04-10-introduction-about-webpack-configuration
 ---
 
 <figure class="amms-gb-img-figure-centered">
 	<figcaption>Webpack's Working Principle</figcaption>
-	<img src="/assets/posts/2016-04-10-introduction-about-webpack-configuration/what-is-webpack.png" alt="Webpack's Working Principle" title="Webpack's Working Principle" />
+	<img src="/assets/posts/2016/what-is-webpack.png" alt="Webpack's Working Principle" title="Webpack's Working Principle" />
 </figure>
 
 ### Introduction

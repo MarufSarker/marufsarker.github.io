@@ -6,14 +6,14 @@ keywords: "reactjs,react,reduxjs,redux,graphql,node,npm,html,css,jsx"
 layout: post
 tagline: "React-Redux with GraphQL for Simpler Data Query"
 tags: ["reactjs", "reduxjs", "graphql", "nodejs", "javascript"]
-thumbnail: "/assets/posts/2016-05-09-react-redux-with-graphql/react-redux-graphql.png"
+thumbnail: "/assets/posts/2016/react-redux-graphql.png"
 title:  "Implementing React Redux with GraphQL"
 post_url: 2016-05-09-react-redux-with-graphql
 ---
 
 <figure class="amms-gb-img-figure-centered">
 	<figcaption>ReactJS, ReduxJS and GraphQL</figcaption>
-	<img src="/assets/posts/2016-05-09-react-redux-with-graphql/react-redux-graphql.png" alt="ReactJS, ReduxJS and GraphQL" title="ReactJS, ReduxJS and GraphQL">
+	<img src="/assets/posts/2016/react-redux-graphql.png" alt="ReactJS, ReduxJS and GraphQL" title="ReactJS, ReduxJS and GraphQL">
 </figure>
 
 ## Introduction
