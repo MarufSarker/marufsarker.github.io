@@ -81,7 +81,7 @@ defaults:
     values:
       layout: "post"
       author: "Maruf Sarker"
-      permalink: /blog/:year/:title/
+      permalink: /blog/posts/:title/
 exclude:
   - .bundle
   - Gemfile
